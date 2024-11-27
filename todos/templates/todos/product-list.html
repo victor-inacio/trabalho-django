@@ -10,10 +10,13 @@
 </head>
 
 <body>
-
+    <div>
+    <nav class="navbar navbar-expand-lg bg-light">
+    <a href="http://localhost:8000//" class="btn btn-dark">Voltar para o Login</a>
+    </div>
     <div class="container">
-        <h1>Tarefas Pendentes</h1>
-
+        <h1>Tarefas Pendentes</h1> 
+        
         <table class="table">
             <thead>
                 <tr>
@@ -35,11 +38,12 @@
                     <td>1</td>
                     <td>06/01/2004 18:00</td>
                     <td>
-                        <button class="btn btn-sm btn-success">Editar</button>
+                        <a href="http://localhost:8000/edit/" class="btn btn-success">Editar</a>
                         <button class="btn btn-sm btn-danger" data-bs-toggle="modal"
                             data-bs-target="#exampleModal">Excluir</button>
                     </td>
                 </tr>
+                <a href="http://localhost:8000/registerp/" class="btn btn-secondary">Adicionar Tarefas</a>
             </tbody>
         </table>
 
