@@ -12,38 +12,32 @@
 <body>
 
     <div class="container">
-        <h1>Cadastro de usuário</h1>
+        <h1>Login</h1>
         <div class="border rounded p-3">
-            <form action="">
+            <form action="/sign_user", method="post">
                 <div class="form-group mb-3">
-                    <label for="">Nome de Usuário</label>
-                    <input type="text" name="username" class="form-control">
+                    <label for="name" class="form-label">Name:</label>
+                          <input type="name" class="form-control" id="name" name="name">
                     <div class="invalid-feedback">
-                        Username Error
+                        Name Error
                     </div>
                 </div>
                 <div class="form-group mb-3">
-                    <label for="">Email</label>
-                    <input type="email" name="email" class="form-control">
+                    <label for="email" class="form-label">Email:</label>
+                          <input type="email" class="form-control" id="email" name="email">
                     <div class="invalid-feedback">
                         Email Error
                     </div>
                 </div>
                 <div class="form-group mb-3">
-                    <label for="">Senha</label>
-                    <input type="password" name="password" class="form-control">
+                    <label for="password" class="form-label">Password:</label>
+                    <input type="password" class="form-control" id="password" name="password">
                     <div class="invalid-feedback">
                         Password Error
                     </div>
                 </div>
-                <div class="form-group mb-3">
-                    <label for="">Confirmar Senha</label>
-                    <input type="password" name="confirm-password" class="form-control">
-                    <div class="invalid-feedback">
-                        Confirm Password Error
-                    </div>
-                </div>
-                <a href="http://localhost:8000//" class="btn btn-success">Cadastrar-se</a>
+
+                <button class="btn btn-success">Sign In</button>
             </form>
         </div>
     </div>
