@@ -15,8 +15,8 @@
     <a href="http://localhost:8000//" class="btn btn-dark">Voltar para o Login</a>
     </div>
     <div class="container">
-        <h1>Tarefas Pendentes</h1>
-
+        <h1>Tarefas Pendentes</h1> 
+        
         <table class="table">
             <thead>
                 <tr>
@@ -28,6 +28,7 @@
                     <th scope="col">Ações</th>
                 </tr>
             </thead>
+            <tbody>
             {% for todo in todos %}
                 <tr>
                     <th scope="row">
@@ -39,7 +40,10 @@
                     <td>{{ todo.deadline|date:"d/m/Y H:i" }}</td>  <!-- Formata a data -->
                     <td>
                         <a href="{% url 'product_edit' todo.id %}" class="btn btn-success">Editar</a>
-                        <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Excluir</button>
+                        <form action="{% url 'product_delete' todo.id %}" method="POST" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-sm btn-danger">Excluir</button>
+                        </form>
                     </td>
                 </tr>
             {% empty %}
@@ -47,6 +51,8 @@
                     <td colspan="6">Nenhuma tarefa pendente</td>
                 </tr>
             {% endfor %}
+                <a href="http://localhost:8000/registerp/" class="btn btn-secondary">Adicionar Tarefas</a>
+            </tbody>
         </table>
 
 

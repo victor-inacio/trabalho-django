@@ -46,11 +46,12 @@ def product_edit(request, pk):
 
 # Função para listar todas as tarefas
 def product_list(request):
-    todos = Todo.objects.all().order_by('priority')  # Ordena pela prioridade
+    todos = Todo.objects.all().order_by('priority').reverse()  # Ordena pela prioridade
     return render(request, 'todos/product-list.html', {'todos': todos})
 
 # Função para excluir uma tarefa
-def product_delete(request, pk):
-    todo = get_object_or_404(Todo, pk=pk)
-    todo.delete()
-    return redirect('product_list')  # Redireciona para a lista de tarefas após deletar
+def product_delete(request, id):
+    todo = get_object_or_404(Todo, id=id)
+    todo.delete()  # Exclui a tarefa
+    return redirect('product_list')  # Redireciona para a lista de tarefas
+
