@@ -1,14 +1,11 @@
-
-from django.contrib import admin
 from django.urls import path
-
-from todos.views import login, register, product_register, product_edit,product_list 
+from todos import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', login),
-    path('register/', register),
-    path('registerp/', product_register),
-    path('edit/', product_edit),
-    path('list/', product_list),
+    path('', views.login, name='login'),
+    path('register/', views.register, name='register'),
+    path('registerp/', views.product_register, name='product_register'),
+    path('edit/<int:pk>/', views.product_edit, name='product_edit'),  # Editar uma tarefa com ID
+    path('list/', views.product_list, name='product_list'),  # Lista todas as tarefas
+    path('product/delete/', views.product_delete, name='product_delete'),
 ]

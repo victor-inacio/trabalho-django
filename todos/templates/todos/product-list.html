@@ -15,8 +15,8 @@
     <a href="http://localhost:8000//" class="btn btn-dark">Voltar para o Login</a>
     </div>
     <div class="container">
-        <h1>Tarefas Pendentes</h1> 
-        
+        <h1>Tarefas Pendentes</h1>
+
         <table class="table">
             <thead>
                 <tr>
@@ -28,23 +28,25 @@
                     <th scope="col">Ações</th>
                 </tr>
             </thead>
-            <tbody>
+            {% for todo in todos %}
                 <tr>
                     <th scope="row">
-                        <input type="checkbox" checked="false" class="form-check-input">
+                        <input type="checkbox" class="form-check-input" {% if todo.finished_at %} checked {% endif %}>
                     </th>
-                    <td>Trabalho Python</td>
-                    <td>Tarefa muito importante</td>
-                    <td>1</td>
-                    <td>06/01/2004 18:00</td>
+                    <td>{{ todo.title }}</td>
+                    <td>{{ todo.description }}</td>
+                    <td>{{ todo.get_priority_display }}</td>  <!-- Exibe o nome legível da prioridade -->
+                    <td>{{ todo.deadline|date:"d/m/Y H:i" }}</td>  <!-- Formata a data -->
                     <td>
-                        <a href="http://localhost:8000/edit/" class="btn btn-success">Editar</a>
-                        <button class="btn btn-sm btn-danger" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">Excluir</button>
+                        <a href="{% url 'product_edit' todo.id %}" class="btn btn-success">Editar</a>
+                        <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Excluir</button>
                     </td>
                 </tr>
-                <a href="http://localhost:8000/registerp/" class="btn btn-secondary">Adicionar Tarefas</a>
-            </tbody>
+            {% empty %}
+                <tr>
+                    <td colspan="6">Nenhuma tarefa pendente</td>
+                </tr>
+            {% endfor %}
         </table>
 
 

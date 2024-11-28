@@ -14,41 +14,12 @@
     <div class="container">
         <h1>Editar Tarefa</h1>
         <div class="border rounded p-3">
-            <form action="">
-                <div class="form-group mb-3">
-                    <label for="">Título</label>
-                    <input type="text" name="title" class="form-control" value="Nome da tarefa que existe" required>
-                    <div class="invalid-feedback">
-                        Title Name Error
-                    </div>
-                </div>
-                <div class="form-group mb-3">
-                    <label for="">Descrição</label>
-                    <textarea class="form-control" name="description" value="Descrição da tarefa que existe"
-                        required></textarea>
-                    <div class="invalid-feedback">
-                        Description Error
-                    </div>
-                </div>
-                <div class="form-group mb-3">
-                    <label for="">Prioridade</label>
-                    <input type="number" name="priority" value="1" min="1" max="4" class="form-control" value="2"
-                        required>
-                    <div class="invalid-feedback">
-                        Priority Error
-                    </div>
-                </div>
-                <div class="form-group mb-3">
-                    <label for="">Data Final</label>
-                    <input type="datetime-local" name="deadline" class="form-control" value="2004-06-01T18:00" required>
-                    <div class="invalid-feedback">
-                        Deadline Error
-                    </div>
-                </div>
-
-
-                <a href="http://localhost:8000/list/" class="btn btn-success">Editar</a>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-success">Salvar</button>
             </form>
+
         </div>
     </div>
 
